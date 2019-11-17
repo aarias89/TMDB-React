@@ -1,4 +1,6 @@
 import React from "react";
+import MovieListContainer from "./components/MovieListContainer";
+
 import { TMDB_API_KEY } from "./KEYS";
 import axios from "axios";
 
@@ -29,12 +31,11 @@ export default class App extends React.Component {
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      return <div>{console.log(this.state.favMovies)}</div>;
+      return (
+        <div>
+          <MovieListContainer listData={this.state.favMovies} />
+        </div>
+      );
     }
-    // return (
-    //   <div>
-    //    <div></div>
-    //   </div>
-    // );
   }
 }
