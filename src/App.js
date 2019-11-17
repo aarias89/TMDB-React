@@ -32,7 +32,8 @@ export default class App extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div>
+        <div id="app-wrapper">
+          <h1 id="app-header">TMDB-React</h1>
           <MovieListContainer listData={this.state.favMovies} />
         </div>
       );

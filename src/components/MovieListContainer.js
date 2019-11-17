@@ -12,8 +12,8 @@ const MovieListContainer = props => {
   });
 
   return (
-    <div>
-      <ul>{movieItems}</ul>
+    <div id="movie-list-container">
+      <ul id="movie-list">{movieItems}</ul>
     </div>
   );
 };

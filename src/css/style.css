@@ -1,2 +1,46 @@
-#root {
+#app-wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+#app-header {
+  grid-column: 1 / 13;
+  margin-top: 0.3em;
+  text-align: center;
+  font-size: 3rem;
+  grid-row: 1 / 2;
+}
+#movie-list-container {
+  grid-column: 2 / 12;
+}
+#movie-list {
+  grid-column: 1 / 12;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  list-style: none;
+}
+
+#movie-list-item-card {
+  flex: 0 0 auto;
+  margin: 0.5%;
+  width: 16em;
+  height: 31em;
+  background-color: #000000c2;
+  border-radius: 25px;
+}
+
+#movie-list-item-details {
+  font-size: 1.8em;
+  font-weight: 700;
+  text-align: center;
+  color: #dcdcdc;
+  padding: 10px;
+}
+
+#movie-list-item-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 25px 25px 0px 0px;
 }
