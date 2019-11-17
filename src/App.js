@@ -1,5 +1,6 @@
 import React from "react";
 import MovieListContainer from "./components/MovieListContainer";
+import MovieDetail from "./components/MovieDetail";
 
 import { TMDB_API_KEY } from "./KEYS";
 import axios from "axios";
@@ -7,7 +8,8 @@ import axios from "axios";
 export default class App extends React.Component {
   state = {
     isLoaded: false,
-    favMovies: {}
+    favMovies: {},
+    selectedMovieId: null
   };
 
   fetchMovieData(key, param) {
@@ -26,6 +28,11 @@ export default class App extends React.Component {
       });
   }
 
+  handleMovieSelect = val => {
+    console.log(val);
+    this.setState({ selectedMovieId: val });
+  };
+
   render() {
     const { isLoaded } = this.state;
     if (!isLoaded) {
@@ -34,7 +41,11 @@ export default class App extends React.Component {
       return (
         <div id="app-wrapper">
           <h1 id="app-header">TMDB-React</h1>
-          <MovieListContainer listData={this.state.favMovies} />
+          <MovieDetail movieID={this.state.selectedMovieId} />
+          <MovieListContainer
+            listData={this.state.favMovies}
+            onMovieSelectID={this.handleMovieSelect}
+          />
         </div>
       );
     }

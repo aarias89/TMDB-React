@@ -8,7 +8,13 @@ const MovieListContainer = props => {
     return <div>No results</div>;
   }
   const movieItems = results.map(movie => {
-    return <MovieListItem key={movie.id} movie={movie} />;
+    return (
+      <MovieListItem
+        key={movie.id}
+        movie={movie}
+        onMovieSelectID={props.onMovieSelectID}
+      />
+    );
   });
 
   return (
