@@ -43,6 +43,7 @@ export default class App extends React.Component {
           <h1 id="app-header">TMDB-React</h1>
           <MovieDetail movieID={this.state.selectedMovieId} />
           <MovieListContainer
+            contentTitle="Favorite Movies"
             listData={this.state.favMovies}
             onMovieSelectID={this.handleMovieSelect}
           />

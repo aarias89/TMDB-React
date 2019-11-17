@@ -16,7 +16,7 @@ export default class MovieDetail extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.movieID !== prevProps.movieID) {
       this.fetchMovieData(TMDB_API_KEY, this.props.movieID).then(res => {
-        console.log(res);
+        this.setState({ selectedMovieData: res.data, isLoaded: true });
       });
     }
   }
@@ -40,17 +40,24 @@ export default class MovieDetail extends React.Component {
       poster_path
     } = this.state.selectedMovieData;
     const imgURL = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
+    var movieDetailInfoStyle = {
+      backgroundSize: "cover",
+      backgroundPosition: "center center  no-repeat",
+      backgroundImage: `url(${imgURL + backdrop_path})`,
+      zIndex: "0"
+      // opacity: ".2"
+    };
     const { isLoaded } = this.state;
 
     if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div></div>;
     } else {
       return (
-        <div>
+        <div id="movie-detail-container">
           <div>
             <img src={imgURL + poster_path} alt={title + "poster"} />
           </div>
-          <div>
+          <div style={movieDetailInfoStyle}>
             <div>
               <h2>{title}</h2>
               <p>{tagline}</p>

@@ -19,6 +19,7 @@ const MovieListContainer = props => {
 
   return (
     <div id="movie-list-container">
+      <h2>{props.contentTitle}</h2>
       <ul id="movie-list">{movieItems}</ul>
     </div>
   );
