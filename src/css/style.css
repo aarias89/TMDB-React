@@ -9,6 +9,10 @@
   font-size: 3rem;
   grid-row: 1 / 2;
 }
+#search-bar {
+  grid-column: 1 / 13;
+  text-align: center;
+}
 #movie-list-container {
   grid-column: 2 / 12;
 }

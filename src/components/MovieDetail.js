@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { TMDB_API_KEY } from "../KEYS";
+import { TMDB_API_KEY, YT_API_KEY } from "../KEYS";
 import MovieListContainer from "./MovieListContainer";
 
 export default class MovieDetail extends React.Component {

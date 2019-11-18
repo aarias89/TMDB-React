@@ -5,7 +5,7 @@ const MovieListContainer = props => {
   const { results } = props.listData;
 
   if (!results) {
-    return <div>No results</div>;
+    return <div></div>;
   }
   const movieItems = results.map(movie => {
     return (
