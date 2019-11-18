@@ -21,6 +21,9 @@ A searchbar on the top can be used to search movies by title.
 
 Jest Testing is included - to Test just run
 
+The application had Lazy Loading, Suspense intergrated into to. To test this feature: <br/>
+Go into developer tools, network tab, on the online drop drown tab, select "slow 3g" for the presets. Refresh Browser.
+
 ### `npm run test`
 
 ## To-do
