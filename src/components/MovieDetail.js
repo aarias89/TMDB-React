@@ -1,13 +1,16 @@
 import React from "react";
 import axios from "axios";
+import YTSearch from "youtube-api-search";
 import { TMDB_API_KEY, YT_API_KEY } from "../KEYS";
 import MovieListContainer from "./MovieListContainer";
+import TrailerComponent from "./TrailerComponent";
 
 export default class MovieDetail extends React.Component {
   state = {
     selectedMovieData: {},
     isLoaded: false,
-    relatedMovies: { results: [] }
+    relatedMovies: { results: [] },
+    selectedTrailer: []
   };
 
   componentDidMount() {
@@ -34,9 +37,17 @@ export default class MovieDetail extends React.Component {
           );
         })
         .then(res => {
-          this.setState({ relatedMovies: res.data });
+          this.setState({ relatedMovies: res.data, selectedTrailer: [] });
         });
     }
+  }
+  videoSearch(term) {
+    YTSearch({ key: YT_API_KEY, term: term + "trailer" }, videos => {
+      console.log(videos[0]);
+      this.setState({
+        selectedTrailer: videos[0]
+      });
+    });
   }
 
   fetchMovieData(key, param) {
@@ -64,7 +75,6 @@ export default class MovieDetail extends React.Component {
       backgroundImage: `url(${imgURL + backdrop_path})`,
       zIndex: "0",
       width: "63%"
-      // opacity: ".2"
     };
     const { isLoaded } = this.state;
 
@@ -99,6 +109,16 @@ export default class MovieDetail extends React.Component {
                   <br />
                   Genres : {genres.map(genre => genre.name + " ")}
                 </div>
+              </div>
+              <div>
+                <button
+                  onClick={() => {
+                    this.videoSearch(title);
+                  }}
+                >
+                  Watch Trailer
+                </button>
+                <TrailerComponent video={this.state.selectedTrailer} />
               </div>
             </div>
           </div>
