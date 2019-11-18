@@ -1,5 +1,7 @@
 import React from "react";
-import MovieListItem from "./MovieListItem";
+import { Suspense } from "react";
+// import MovieListItem from "./MovieListItem";
+const MovieListItem = React.lazy(() => import("./MovieListItem"));
 
 const MovieListContainer = props => {
   const { results } = props.listData;
@@ -9,11 +11,13 @@ const MovieListContainer = props => {
   }
   const movieItems = results.map(movie => {
     return (
-      <MovieListItem
-        key={movie.id}
-        movie={movie}
-        onMovieSelectID={props.onMovieSelectID}
-      />
+      <Suspense fallback={<h1>Still Loading…</h1>}>
+        <MovieListItem
+          key={movie.title}
+          movie={movie}
+          onMovieSelectID={props.onMovieSelectID}
+        />
+      </Suspense>
     );
   });
 

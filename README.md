@@ -1,3 +1,42 @@
+## TMDB-React
+
+To run this application
+
+### `npm install`
+
+Once all the dependencies have installed run:
+
+### `npm start`
+
+API Keys are in separate js file...for sake of simplicity...
+
+The application will load the current top movies at the moment.
+<br />
+<br />
+Each movie title can be clicked and more detail will load along with a list of related movies. These too can be clicked on for more information.
+<br /><br />
+The movie detail section has the ability to search for and display the selected movie's trailer
+<br /><br />
+A searchbar on the top can be used to search movies by title.
+
+Jest Testing is included - to Test just run
+
+### `npm run test`
+
+## To-do
+
+Add media queries
+<br/>
+<br/>
+Refactor code
+<br/>
+<br/>
+Expand Test coverage
+<br/>
+<br/>
+implement Fandango API based on location for movie times and location if available in theaters.
+
+<br /><br /><br /><br /><br /><br /><br />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
