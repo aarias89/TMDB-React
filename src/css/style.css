@@ -1,6 +1,13 @@
+html {
+  background-color: #131418 !important;
+}
+body {
+  background-color: #131418;
+}
 #app-wrapper {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  background-color: #131418;
 }
 #app-header {
   grid-column: 1 / 13;
@@ -8,11 +15,17 @@
   text-align: center;
   font-size: 3rem;
   grid-row: 1 / 2;
+  color: #dcdcdc;
 }
 #search-bar {
   grid-column: 1 / 13;
   text-align: center;
 }
+.custom-search-input input {
+  height: 3em;
+  width: 16em;
+}
+
 #movie-list-container {
   grid-column: 2 / 12;
 }
@@ -58,6 +71,9 @@
   justify-content: space-around;
   height: 45em;
 }
+#movie-list-container h2 {
+  color: #dcdcdc;
+}
 
 #img-overlay {
   height: 45em;
@@ -91,14 +107,26 @@
   font-size: 1em;
   font-weight: 400;
   padding: 0 0 0 0;
-  /* margin: 0.67em; */
 }
 #movie-data {
   color: #ffffff;
   font-size: 1em;
   font-weight: 400;
   padding: 0 0 0 0;
-  /* margin: 0.67em; */
+}
+
+#yt-container {
+  padding: 0em 10em 0em 3em;
+}
+#yt-container button {
+  margin-bottom: 20px;
+}
+.trailer-container {
+  height: 18em;
+}
+.vid-box iframe {
+  height: 15em;
+  width: 25em;
 }
 
 .close-x {
@@ -132,4 +160,46 @@
   content: "x";
   font-size: 30px;
   font-weight: 500;
+}
+
+@media only screen and (max-width: 480px) {
+  /* html {
+    display: none;
+  } */
+  #movie-detail-wrapper {
+    grid-column: 1 / 12;
+  }
+  #movie-detail-container {
+    height: 49em;
+  }
+  #mov-detail-style {
+    width: 100% !important;
+  }
+  #movie-detail-poster {
+    display: none;
+  }
+  #img-overlay {
+    width: 90%;
+    height: 49em;
+  }
+  #movie-detail-right-panel {
+    padding: 0em 0em 0em 0em;
+  }
+  #yt-container {
+    padding: 0em 0em 0em 0em;
+  }
+  #movie-list-item-details {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    color: #dcdcdc;
+    padding: 10px;
+  }
+  #movie-list-container {
+    grid-column: 1 / 12;
+  }
+  .close-circle {
+    top: 9.25em;
+    right: 3.25em;
+  }
 }

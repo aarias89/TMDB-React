@@ -1,9 +1,9 @@
 import React from "react";
+import axios from "axios";
+import { TMDB_API_KEY } from "./KEYS";
+
 import MovieListContainer from "./components/MovieListContainer";
 import MovieDetail from "./components/MovieDetail";
-
-import { TMDB_API_KEY } from "./KEYS";
-import axios from "axios";
 import SearchBar from "./components/SearchBar";
 
 export default class App extends React.Component {
@@ -42,7 +42,7 @@ export default class App extends React.Component {
     this.setState({ selectedMovieId: val });
   };
 
-  handleMOvieSearchTerm = term => {
+  handleMovieSearchTerm = term => {
     this.fetchMovieDataByKeyWord(TMDB_API_KEY, term)
       .then(res => {
         this.setState({ searchResults: res.data });
@@ -53,14 +53,25 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { isLoaded } = this.state;
+    const { isLoaded, selectedMovieId } = this.state;
     if (!isLoaded) {
       return <div>Loading...</div>;
+    } else if (!selectedMovieId && isLoaded) {
+      return (
+        <div className="App">
+          <SearchBar searchMovie={this.handleMovieSearchTerm} />
+          <MovieListContainer
+            contentTitle="Favorite Movies"
+            listData={this.state.favMovies}
+            onMovieSelectID={this.handleMovieSelect}
+          />
+        </div>
+      );
     } else {
       return (
         <div id="app-wrapper">
           <h1 id="app-header">TMDB-React</h1>
-          <SearchBar searchMovie={this.handleMOvieSearchTerm} />
+          <SearchBar searchMovie={this.handleMovieSearchTerm} />
           <MovieListContainer
             listData={this.state.searchResults}
             onMovieSelectID={this.handleMovieSelect}

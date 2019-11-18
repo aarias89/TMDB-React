@@ -4,7 +4,6 @@ import YTSearch from "youtube-api-search";
 import { TMDB_API_KEY, YT_API_KEY } from "../KEYS";
 import MovieListContainer from "./MovieListContainer";
 import TrailerComponent from "./TrailerComponent";
-
 export default class MovieDetail extends React.Component {
   state = {
     selectedMovieData: {},
@@ -43,7 +42,6 @@ export default class MovieDetail extends React.Component {
   }
   videoSearch(term) {
     YTSearch({ key: YT_API_KEY, term: term + "trailer" }, videos => {
-      console.log(videos[0]);
       this.setState({
         selectedTrailer: videos[0]
       });
@@ -58,7 +56,6 @@ export default class MovieDetail extends React.Component {
 
   render() {
     const {
-      id,
       genres,
       title,
       budget,
@@ -92,7 +89,7 @@ export default class MovieDetail extends React.Component {
               <img src={imgURL + poster_path} alt={title + "poster"} />
             </div>
 
-            <div style={movieDetailInfoStyle}>
+            <div id="mov-detail-style" style={movieDetailInfoStyle}>
               <div id="img-overlay"></div>
               <div id="movie-detail-right-panel">
                 <div id="movie-title">
@@ -110,7 +107,7 @@ export default class MovieDetail extends React.Component {
                   Genres : {genres.map(genre => genre.name + " ")}
                 </div>
               </div>
-              <div>
+              <div id="yt-container">
                 <button
                   onClick={() => {
                     this.videoSearch(title);
