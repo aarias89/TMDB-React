@@ -27,9 +27,11 @@ export default class App extends React.Component {
         console.log(error.message);
       });
   }
+  handleClick = () => {
+    this.setState({ selectedMovieId: {} });
+  };
 
   handleMovieSelect = val => {
-    console.log(val);
     this.setState({ selectedMovieId: val });
   };
 
@@ -41,7 +43,10 @@ export default class App extends React.Component {
       return (
         <div id="app-wrapper">
           <h1 id="app-header">TMDB-React</h1>
-          <MovieDetail movieID={this.state.selectedMovieId} />
+          <MovieDetail
+            movieID={this.state.selectedMovieId}
+            onMovieSelectID={this.handleMovieSelect}
+          />
           <MovieListContainer
             contentTitle="Favorite Movies"
             listData={this.state.favMovies}
